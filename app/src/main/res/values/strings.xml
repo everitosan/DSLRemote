@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DSLRemote</string>
+
+    <string name="trigger"> Release </string>
+    <string name="focus"> Focus </string>
+
+</resources>
