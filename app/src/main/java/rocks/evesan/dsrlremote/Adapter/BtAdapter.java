@@ -32,6 +32,7 @@ public class BtAdapter {
     private ProgressDialog progress;
     static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private boolean isBtConnected = false;
+    private ConnectBT mConnectBT;
 
 
     public BtAdapter(Context ctx){
@@ -48,7 +49,21 @@ public class BtAdapter {
     }
 
     public void connectTo(String MAC){
-        new ConnectBT(this.context, MAC).execute();
+        mConnectBT = new ConnectBT(this.context, MAC);
+        mConnectBT.execute();
+    }
+
+    public boolean disconnect() {
+        try{
+            btSocket.getOutputStream().close();
+            btSocket.close();
+            mConnectBT = null;
+            isBtConnected = false;
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+
     }
 
     public void write(String msg) {
@@ -113,7 +128,6 @@ public class BtAdapter {
             }
             else
             {
-                Toast.makeText(this.context, "Connected", Toast.LENGTH_SHORT).show();
                 isBtConnected = true;
                 //communicates with Bluetooth List activity
                 try {
