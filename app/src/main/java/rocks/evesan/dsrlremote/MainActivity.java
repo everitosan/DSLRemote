@@ -1,11 +1,13 @@
 package rocks.evesan.dsrlremote;
 
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,8 +16,11 @@ public class MainActivity extends AppCompatActivity {
     private final int UNPLUGED_MODE = 0;
     private final int FOCUS_MODE = 1;
     private final int RELEASE_MODE = 2;
+    private boolean goBack = false;
+
     private ImageButton trigger;
     private Switch mSwitch;
+    private RelativeLayout container;
 
     private String focusTxt;
     private String triggerTxt;
@@ -25,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        container = (RelativeLayout) findViewById(R.id.activityContainer);
         mSwitch = (Switch) findViewById(R.id.switch1);
         trigger = (ImageButton) findViewById(R.id.imageButton);
         trigger.setOnTouchListener(triggerButtonListener);
@@ -73,6 +79,23 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
+
+    @Override
+    public void onBackPressed() {
+        if(!goBack) {
+            Snackbar snackbar = Snackbar
+                    .make(container, getResources().getString(R.string.backAdvice), Snackbar.LENGTH_LONG);
+
+            snackbar.show();
+            goBack = true;
+        } else {
+            if(BluetoothList.mBluetoothAdapter.disconnect()) {
+                finish();
+            }
+
+
+        }
+    }
 
 
 }

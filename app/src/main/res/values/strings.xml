@@ -3,5 +3,6 @@
 
     <string name="trigger"> Release </string>
     <string name="focus"> Focus </string>
+    <string name="backAdvice"> Press back again to disconnect the bluetooth. </string>
 
 </resources>
