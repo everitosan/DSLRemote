@@ -31,6 +31,8 @@ public class BluetoothList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bluetooth_list);
 
+        getSupportActionBar().hide();
+
         context = BluetoothList.this;
         mBluetoothAdapter = new BtAdapter(this);
         list =  (ListView) findViewById(R.id.listView);

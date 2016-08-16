@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().hide();
+
         container = (RelativeLayout) findViewById(R.id.activityContainer);
         mSwitch = (Switch) findViewById(R.id.switch1);
         trigger = (ImageButton) findViewById(R.id.imageButton);
@@ -49,9 +51,11 @@ public class MainActivity extends AppCompatActivity {
             if (isChecked) {
                 mode = RELEASE_MODE;
                 mSwitch.setText( triggerTxt );
+                trigger.setImageDrawable(getResources().getDrawable(R.drawable.trigger) );
             } else {
                 mode = FOCUS_MODE;
                 mSwitch.setText( focusTxt );
+                trigger.setImageDrawable(getResources().getDrawable(R.drawable.focus) );
             }
 
         }
@@ -62,18 +66,24 @@ public class MainActivity extends AppCompatActivity {
         public boolean onTouch(View v, MotionEvent event) {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
-                    trigger.setImageDrawable(getResources().getDrawable(R.drawable.button_pressed) );
+
 
                     if(mode == FOCUS_MODE) {
                         BluetoothList.mBluetoothAdapter.write(Integer.toString(FOCUS_MODE));
+                        trigger.setImageDrawable(getResources().getDrawable(R.drawable.focus_pressed) );
                     } else if (mode == RELEASE_MODE) {
                         BluetoothList.mBluetoothAdapter.write( Integer.toString(RELEASE_MODE));
+                        trigger.setImageDrawable(getResources().getDrawable(R.drawable.trigger_pressed) );
                     }
 
                     break;
                 case MotionEvent.ACTION_UP:
-                    trigger.setImageDrawable(getResources().getDrawable(R.drawable.button) );
                     BluetoothList.mBluetoothAdapter.write( Integer.toString(UNPLUGED_MODE) );
+                    if (mode == FOCUS_MODE) {
+                        trigger.setImageDrawable(getResources().getDrawable(R.drawable.focus) );
+                    } else {
+                        trigger.setImageDrawable(getResources().getDrawable(R.drawable.trigger) );
+                    }
                     break;
             }
             return false;

@@ -8,13 +8,15 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:id="@+id/activityContainer"
+    android:background="@drawable/background"
     tools:context="rocks.evesan.dsrlremote.MainActivity">
 
     <ImageButton
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
         android:id="@+id/imageButton"
-        android:src="@drawable/button"
+        android:src="@drawable/focus"
         android:background="@color/transparent"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
