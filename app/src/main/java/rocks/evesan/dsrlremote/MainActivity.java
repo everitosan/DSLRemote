@@ -1,5 +1,6 @@
 package rocks.evesan.dsrlremote;
 
+import android.graphics.Typeface;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton trigger;
     private Switch mSwitch;
     private RelativeLayout container;
+    private TextView modeText;
 
     private String focusTxt;
     private String triggerTxt;
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         container = (RelativeLayout) findViewById(R.id.activityContainer);
+        modeText = (TextView) findViewById(R.id.mode);
         mSwitch = (Switch) findViewById(R.id.switch1);
         trigger = (ImageButton) findViewById(R.id.imageButton);
         trigger.setOnTouchListener(triggerButtonListener);
@@ -42,19 +46,25 @@ public class MainActivity extends AppCompatActivity {
         mode = FOCUS_MODE;
         focusTxt = getResources().getString(R.string.focus);
         triggerTxt = getResources().getString(R.string.trigger);
+
+        setFont();
     }
 
+    public void setFont() {
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Futura_Medium_Italic_font.ttf");
+        modeText.setTypeface(font);
+    }
 
     public CompoundButton.OnCheckedChangeListener switchModeListener = new CompoundButton.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             if (isChecked) {
                 mode = RELEASE_MODE;
-                mSwitch.setText( triggerTxt );
+                modeText.setText( triggerTxt );
                 trigger.setImageDrawable(getResources().getDrawable(R.drawable.trigger) );
             } else {
                 mode = FOCUS_MODE;
-                mSwitch.setText( focusTxt );
+                modeText.setText( focusTxt );
                 trigger.setImageDrawable(getResources().getDrawable(R.drawable.focus) );
             }
 

@@ -17,6 +17,7 @@ import java.util.Set;
 import java.util.UUID;
 
 import rocks.evesan.dsrlremote.BluetoothList;
+import rocks.evesan.dsrlremote.R;
 
 /**
  * Created by evesan on 8/7/16.

@@ -8,13 +8,27 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/background"
+    android:orientation="vertical"
     tools:context="rocks.evesan.dsrlremote.BluetoothList">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/select"
+        android:id="@+id/select"
+        android:textSize="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listView"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/select"
+        android:layout_marginTop="20dp"
         android:layout_alignParentStart="true" />
-    
+
+
+
 </RelativeLayout>

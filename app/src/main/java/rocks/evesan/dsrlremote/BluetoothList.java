@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
@@ -37,6 +38,10 @@ public class BluetoothList extends AppCompatActivity {
         mBluetoothAdapter = new BtAdapter(this);
         list =  (ListView) findViewById(R.id.listView);
         list.setOnItemClickListener(selectDeviceListener);
+
+        TextView txt = (TextView) findViewById(R.id.select);
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Futura_Medium_Italic_font.ttf");
+        txt.setTypeface(font);
 
         checkPermission();
     }
