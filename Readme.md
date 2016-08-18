@@ -5,8 +5,7 @@ A special cable self-designed is required with and Arduino or an AtTiny.
 
 The AtTiny code can be found [here](https://github.com/everitosan/DSLRemoteAtTiny).
 
-<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<?xml version="1.0" encoding="utf-8"?>
 <svg width="100%" height="100%" viewBox="0 0 1280 2400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.41421;">
     <g id="BG">
         <rect x="-6.16093" y="-187.468" width="1293.94" height="2882.99" style="fill:url(#tag1);"/>
